@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  - var result = [{"GameName":"Monopoly","GameType":"Board","GamePrice":15.99},{ "GameName":"Marvel King","GameType":"Board","GamePrice":19.99},{ "GameName":"UNO","GameType":"Card","GamePrice":5.99}]
+  div.container-fluid
+     div.row
+        each item,index in result
+            div.col-sm-3(onclick=`buy(${index})`) Game Name: #{item["GameName"]}  <br>  Game Type: #{item["GameType"]} <br> Game Price: #{item["GamePrice"]} 
+  script.
+      function buy(ind){
+         alert("your purchased item "+(ind+1))
+      }
