@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var result = [{"GameName":"Monopoly","GameType":"Board","GamePrice":15.99},{ "GameName":"Marvel King","GameType":"Board","GamePrice":19.99},{ "GameName":"UNO","GameType":"Card","GamePrice":5.99}]
+  - var result =  results
   div.container-fluid
      div.row
         each item,index in result
