@@ -14,6 +14,8 @@ router.get('/', api_controller.api);
  
 // POST request for creating a Game.  
 router.post('/Game', Game_controller.Game_create_post); 
+
+Game_controller 
  
 // DELETE request to delete Game. 
 router.delete('/Game/:id', Game_controller.Game_delete); 

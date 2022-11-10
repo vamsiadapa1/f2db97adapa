@@ -29,7 +29,10 @@ exports.Game_view_all_Page = async function(req, res) {
 exports.Game_create_post = async function(req, res) { 
     console.log(req.body) 
     let document = new Game(); 
-     
+     // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"GameName":"King Kong", "GameType":"Board", "GamePrice":"12.45"}
     document.GameName = req.body.GameName;    
     document.GameType = req.body.GameType;
     document.GamePrice = req.body.GamePrice;  

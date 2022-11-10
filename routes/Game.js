@@ -1,4 +1,5 @@
 var express = require('express');
+const Game_controlers= require('../controllers/Game'); 
 var router = express.Router();
 
 /* GET Game page. */
