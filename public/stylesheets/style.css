@@ -1,3 +1,4 @@
+y
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -6,3 +7,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+.costumeAttr {
+  background-color: aquamarine;
+  width: 120px;
+ }
+
+ .Gamestyle{
+  background-color: yellow;
+  width:200px;
+ }

@@ -1,0 +1,26 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to detail
+ else
+  - let Gameid = toShow._id
+  - let GameName = toShow.GameName
+  - let GameType = toShow.GameType
+  - let GamePrice = toShow.GamePrice
+
+  div
+   div.row
+    div(class='costumeAttr mr-3') Game ID is:
+    div #{Gameid}
+   div.row
+    div(class='costumeAttr mr-3') Game Name is:
+    div #{GameName}
+   div.row
+    div(class='costumeAttr mr-3') Game Type is:
+    div #{GameType}
+   div.row
+    div(class='costumeAttr mr-3') Game Price is:
+    div #{GamePrice}
+ 
+

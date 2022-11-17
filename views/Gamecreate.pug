@@ -1,0 +1,38 @@
+extends layout
+block content
+ div(class="container-fluid p-5 bg-warning text-yellow text-center")
+  h2.text-center Create New Game
+ br
+ form(id='GameForm', action="/resource/Game", method="POST")
+  div.form-group
+   label.Gamestyle(for='GameName') Game Name
+   input#GameName(type='text', name='GameName')
+  div.form-group
+   label.Gamestyle(for='GameType') Game Type
+   input#GameType(type='text', name='GameType')
+  div.form-group
+   label.Gamestyle(for='Gameprice') Game Price
+   input#GamePrice(type='number', name='GamePrice')
+   
+   br
+   button(type="submit",class="btn btn-warning") SUBMIT 
+
+
+ script.
+  document.forms['GameForm'].addEventListener('submit', (event) => {
+  event.preventDefault();
+  // TODO do something here to show user that form is being submitted
+  fetch(event.target.action, {
+   method: 'POST',
+   body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+  }).then((resp) => {
+   return resp.json(); // or resp.text() or whatever the server sends
+  }).then((body) => {
+   alert("Save succeded")
+  // TODO handle body
+  }).catch((error) => {
+  // TODO handle error
+   alert("Save failed " + error )
+   });
+  });
+

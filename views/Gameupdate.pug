@@ -1,0 +1,43 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to update
+ else
+  - let Gameid = toShow._id
+  - let GameName = toShow.GameName
+  - let GamePrice = toShow.GamePrice
+  - let GameType = toShow.GameType
+ 
+   div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{Gameid}
+  - let actionid = "/resource/Game/" + Gameid
+  form(id='GameForm', action= actionid, method="PUT")
+   div.form-group
+    label.costumeAttr(for='GameName') Game Name
+    input#GameName(type='text', name='GameName', value= GameName )
+   div.form-group
+    label.costumeAttr(for='GameType') Game Type
+    input#GameType(type='text', name='GameType', value= GameType )
+   div.form-group
+    label.costumeAttr(for='GamePrice') Game Price
+    input#GamePrice(type='number', name='GamePrice', value= GamePrice )
+   input(type="submit")
+  script.
+   document.forms['GameForm'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    // TODO do something here to show user that form is being submitted
+    fetch(event.target.action, {
+     method: 'PUT',
+     body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+    }).then((resp) => {
+     return resp.json(); // or resp.text() or whatever the server sends
+    }).then((body) => {
+     alert("Update succeded")
+    // TODO handle body
+    }).catch((error) => {
+    // TODO handle error
+     alert("Update failed " + error )
+    });
+   });

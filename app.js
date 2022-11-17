@@ -75,7 +75,7 @@ GamePrice:15.99});
   }); 
  
 let instance2 = new 
-Game({tele_name:"Marvel King",  GameType:'Board', 
+Game({GameName:"Marvel King",  GameType:'Board', 
 GamePrice:19.99}); 
 instance2.save( function(err,doc) { 
       if(err) return console.error(err); 
