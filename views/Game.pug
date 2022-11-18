@@ -2,12 +2,14 @@ extends layout
 
 block content
   h1= title
-  - var result =  results
-  div.container-fluid
-     div.row
+  - var result = results
+  div(class="container-fluid")
+     div(class="row m-1")
         each item,index in result
-            div.col-sm-3(onclick=`buy(${index})`) Game Name: #{item["GameName"]}  <br>  Game Type: #{item["GameType"]} <br> Game Price: #{item["GamePrice"]} 
+            - let destination = `dispatch(\"/Game/update?id=${item._id}\")`
+            div(class="row-sm-2", class="m-1") item #{item.GameName}(#{item.GameType}) is #{item.GamePrice}
+             button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-      function buy(ind){
-         alert("your purchased item "+(ind+1))
+      function dispatch(path){
+         window.location.href=path
       }
