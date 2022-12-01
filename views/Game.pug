@@ -3,12 +3,19 @@ extends layout
 block content
   h1= title
   - var result = results
+  - let createPage = `dispatch(\"/Game/create")`
+  div(class="col-sm")
+     button.btn( class="btn-success ml-1", onclick= createPage) Create New Game
   div(class="container-fluid")
      div(class="row m-1")
         each item,index in result
             - let destination = `dispatch(\"/Game/update?id=${item._id}\")`
+            - let detail = `dispatch(\"/Game/detail?id=${item._id}\")`
+            - let deleteItem = `dispatch(\"/Game/delete?id=${item._id}\")`
             div(class="row-sm-2", class="m-1") item #{item.GameName}(#{item.GameType}) is #{item.GamePrice}
              button.btn( class="btn-primary ml-1", onclick= destination) Update
+             button.btn( class="btn-info ml-2 m-2", onclick= detail) View Detail
+             button.btn( class="btn-danger ml-2 m-2", onclick= deleteItem) Delete Item
   script.
       function dispatch(path){
          window.location.href=path

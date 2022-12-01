@@ -1,18 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  a(href="/game") Game Page
-  p Welcome to Vamsi Assignment #{title}
-  button(type='button', class='btn btn-outline-warning', onclick='doBump()') Press Me
+ if (!user)
+  a(href="/login") Login
   br
-  div#bump Bump the count 
+  a(href="/register") Register
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/Game") Take me to Game
   br
-  script.
-      var count=0;
-      var bump=1;
-      function doBump(){
-      count=count+bump;
-      bump=bump+1;
-      print=document.getElementById("bump");
-      print.innerHTML='Count '+count+' with bump '+bump;}
+  a(href="/logout") Logout
